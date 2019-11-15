@@ -23,6 +23,16 @@ public class Materia {
         this.responsable = responsable;
     }
 
+    public Materia(String nombre, String periodo, String responsable, int cod) {
+        this.nombre = nombre;
+        this.periodo = periodo;
+        this.responsable = responsable;
+        this.cod = cod;
+    }
+
+    
+    
+
     public String getNombre() {
         return nombre;
     }
@@ -54,6 +64,10 @@ public class Materia {
     public void setCod(int cod) {
         this.cod = cod;
     }
+    @Override
+    public String toString(){
     
+        return cod+"-"+nombre;
+    }
     
 }

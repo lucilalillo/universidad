@@ -66,5 +66,9 @@ public class Alumno {
     public void setFecnac(LocalDate fecnac){
         this.fecnac = fecnac;
     }
+     public String toString(){
+    
+        return id+"-"+nombre;
+    }
     
 }

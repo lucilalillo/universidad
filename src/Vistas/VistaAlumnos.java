@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -54,22 +55,24 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
         btnActualizar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         tbFecNac = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        btnBuscar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 204, 204));
         setTitle("FORMULARIO ALUMNOS");
         setName("frmAlumnos"); // NOI18N
 
         jLabel1.setBackground(new java.awt.Color(0, 204, 153));
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jLabel1.setText("-ALUMNOS-");
 
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         jLabel2.setText("ID");
 
-        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 2, 11)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         jLabel3.setText("NOMBRE");
 
-        jLabel4.setFont(new java.awt.Font("Comic Sans MS", 2, 11)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
         jLabel4.setText("DNI");
 
         jLabel5.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
@@ -117,6 +120,18 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        jLabel7.setText("(dd/mm/aaaa)");
+
+        btnBuscar.setBackground(new java.awt.Color(51, 102, 255));
+        btnBuscar.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        btnBuscar.setText("BUSCAR");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,11 +139,8 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnGuardar)
                                 .addGap(18, 18, 18)
@@ -150,23 +162,37 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
                                     .addComponent(tbNombre)
                                     .addComponent(tbDni)
                                     .addComponent(tbDom)
-                                    .addComponent(tbFecNac, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))))))
+                                    .addComponent(tbFecNac, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(22, 22, 22))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(tbId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3))
-                    .addComponent(tbNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tbNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -178,14 +204,15 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(tbFecNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tbFecNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnBorrar)
                     .addComponent(btnActualizar)
                     .addComponent(btnLimpiar))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -199,11 +226,13 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
         Alumno alu = new Alumno(nom,dom,dni,fecNac);
         ad.guardarAlumno(alu);
         tbId.setText(alu.getId()+"");
+        JOptionPane.showMessageDialog(null, "El alumno se guardó satisfactoriamente!!");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
         int id = Integer.parseInt(tbId.getText());
         ad.borrarAlumno(id);
+        JOptionPane.showMessageDialog(null, "El alumno se borró satisfactoriamente!!");
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
@@ -216,6 +245,7 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
             Alumno alu = new Alumno(nom,dom,dni,fecNac);
             ad.actualizarAlumno(alu);
         }
+        JOptionPane.showMessageDialog(null, "El alumno se actualizó satisfactoriamente!!");
     }//GEN-LAST:event_btnActualizarActionPerformed
     private void limpiar()
     {
@@ -228,11 +258,25 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         limpiar();
     }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        int id = Integer.parseInt(tbId.getText());
+        Alumno alu = ad.buscarAlumno(id);
+        if(alu != null)
+        {
+            tbId.setText(alu.getId()+"");
+            tbNombre.setText(alu.getNombre());
+            tbDni.setText(alu.getDni()+"");
+            tbDom.setText(alu.getDomicilio());
+            tbFecNac.setText(alu.getFecnac()+"");
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBorrar;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JLabel jLabel1;
@@ -241,6 +285,7 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField tbDni;
     private javax.swing.JTextField tbDom;
     private javax.swing.JTextField tbFecNac;

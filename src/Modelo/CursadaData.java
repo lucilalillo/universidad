@@ -61,7 +61,7 @@ public class CursadaData {
     
     public void borrarCursada(int id){    
         try {            
-            String sql = "DELETE FROM Cursada  WHERE id=?;";          
+            String sql = "DELETE FROM cursa  WHERE id=?;";          
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, id);
             ps.executeUpdate();
@@ -172,7 +172,7 @@ public class CursadaData {
        
        
         try {
-            String sql = "UPDATE cursada SET id_alumno=?, id_materia =?, nota=? WHERE id=?;";
+            String sql = "UPDATE cursa SET id=?, cod =?, nota=? WHERE id_cursa=?;";
             
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
               ps.setInt(1, cursada.getAlumno().getId());
@@ -199,7 +199,7 @@ public class CursadaData {
         return ad.buscarAlumno(id);
     }
     
-   /* public List<Materia> obtenerMateriasCursadas(int id){
+    public List<Materia> obtenerMateriasCursadas(int id){
     List<Materia> materias = new ArrayList<Materia>();
             
 
@@ -248,9 +248,50 @@ public class CursadaData {
             System.out.println("Error al actualizar: " + ex.getMessage());
         }
         
-        
-        
-        
+}
+     public List<Materia> obtenerMateriasNOCursadas(int id){
+    List<Materia> materias = new ArrayList<Materia>();
+            
+
+        try {
+            String sql = "SELECT * FROM materia where cod not in "
+                    + "(SELECT cod FROM cursa where id =?);";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            Materia materia;
+            while(resultSet.next()){
+                materia = new Materia();
+                materia.setCod(resultSet.getInt("cod"));
+                materia.setNombre(resultSet.getString("nombre"));
+                materia.setResponsable(resultSet.getString("responsable"));
+                materia.setPeriodo(resultSet.getString("periodo"));
+                materias.add(materia);
+            }      
+            statement.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener los alumnos: " + ex.getMessage());
+        }
+        return materias;
+      
+    }
+     public void borrarCursadaDeUnaMateriaDeunAlumno(int idAlumno,int idMateria){
     
-    }*/
+        try {
+            
+            String sql = "DELETE FROM cursa WHERE id =? and cod =?;";
+
+            PreparedStatement statement = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            statement.setInt(1, idAlumno);
+            statement.setInt(2, idMateria);
+           
+            statement.executeUpdate();
+            
+            statement.close();
+    
+        } catch (SQLException ex) {
+            System.out.println("Error al insertar un alumno: " + ex.getMessage());
+        }
+        
+    }
 }
