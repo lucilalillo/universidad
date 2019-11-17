@@ -220,8 +220,9 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        if(tbId.getText() != null)
-        {
+        if(tbId.getText() != null) {
+            
+            int id = Integer.parseInt(tbId.getText());
             String nom = tbNombre.getText();
             String resp = tbResp.getText();
             String per = tbPeriodo.getText();
