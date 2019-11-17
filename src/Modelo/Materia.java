@@ -14,7 +14,7 @@ public class Materia {
     private int cod;
 
     public Materia() {
-        this.cod = -1;
+       
     }
 
     public Materia(String nombre, String responsable, String periodo) {
