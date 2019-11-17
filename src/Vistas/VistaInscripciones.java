@@ -248,12 +248,14 @@ public class VistaInscripciones extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rbInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbInscActionPerformed
-        borrarFilas();
+        //borrarFilas();
+        rbNoInsc.setSelected(false);
         cargaDatosInscriptas();
     }//GEN-LAST:event_rbInscActionPerformed
 
     private void rbNoInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNoInscActionPerformed
-        borrarFilas();
+        //borrarFilas();
+        rbInsc.setSelected(false);
         cargarDatosNoInscriptas();
     }//GEN-LAST:event_rbNoInscActionPerformed
 
@@ -286,7 +288,11 @@ public class VistaInscripciones extends javax.swing.JInternalFrame {
              cd.borrarCursadaDeUnaMateriaDeunAlumno(a.getId(), idMateria);
              borrarFilas();
         }
-    }//GEN-LAST:event_btnAnularActionPerformed
+    }
+    
+     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {                                         
+                    dispose();
+    }                             
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
